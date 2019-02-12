@@ -1,0 +1,62 @@
+type Post {
+	id: ID! @unique
+	createdAt: DateTime!
+	updatedAt: DateTime!
+	published: Boolean! @default(value: "false")
+	title: String!
+	content: String
+	author: User!
+}
+
+type User {
+	id: ID! @unique
+	email: String! @unique
+	password: String!
+	name: String
+	posts: [Post!]!
+}
+
+# type User {
+# 	id: ID! @unique
+# 	name: String!
+# 	email: String @unique
+# 	password: String
+# 	comments: [Comment] @relation(name: "CommentsByUser")
+# 	likes: [Like] @relation(name: "LikesByUser")
+# }
+
+type Politician {
+	id: ID! @unique
+	name: String!
+	party: String
+	bills: [Bill] @relation(name: "BillSponsor")
+	yeas: [Bill] @relation(name: "VotesForBills")
+	nays: [Bill] @relation(name: "VotesAgainstBills")
+}
+
+type Bill {
+	id: ID! @unique
+	code: String
+	summary: String
+	sponsor: Politician @relation(name: "BillSponsor")
+	likes: [Like] @relation(name: "BillLikes")
+	comments: [Comment] @relation(name: "BillComment")
+	yeas: [Politician] @relation(name: "VotesForBills")
+	nays: [Politician] @relation(name: "VotesAgainstBills")
+}
+
+type Like {
+	id: ID! @unique
+	bill: Bill @relation(name: "BillLikes")
+	comment: Comment @relation(name: "CommentLikes")
+	user: User! @relation(name: "LikesByUser")
+}
+
+type Comment {
+	id: ID! @unique
+	createdAt: DateTime!
+	content: String!
+	bill: Bill @relation(name: "BillComment")
+	author: User @relation(name: "CommentsByUser")
+	likes: [Like] @relation(name: "CommentLikes")
+}
