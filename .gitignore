@@ -1,0 +1,10 @@
+node_modules/
+oldserver/
+client/
+server/node_modules
+server/generated
+.DS_Store
+*.log
+client/.next
+.build/
+layout.md

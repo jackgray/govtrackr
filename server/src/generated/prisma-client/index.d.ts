@@ -362,60 +362,26 @@ export type UserOrderByInput =
 
 export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
-export interface PoliticianUpdateWithWhereUniqueWithoutYeasInput {
-  where: PoliticianWhereUniqueInput;
-  data: PoliticianUpdateWithoutYeasDataInput;
+export interface BillUpdateManyWithoutSponsorInput {
+  create?: BillCreateWithoutSponsorInput[] | BillCreateWithoutSponsorInput;
+  delete?: BillWhereUniqueInput[] | BillWhereUniqueInput;
+  connect?: BillWhereUniqueInput[] | BillWhereUniqueInput;
+  disconnect?: BillWhereUniqueInput[] | BillWhereUniqueInput;
+  update?:
+    | BillUpdateWithWhereUniqueWithoutSponsorInput[]
+    | BillUpdateWithWhereUniqueWithoutSponsorInput;
+  upsert?:
+    | BillUpsertWithWhereUniqueWithoutSponsorInput[]
+    | BillUpsertWithWhereUniqueWithoutSponsorInput;
+  deleteMany?: BillScalarWhereInput[] | BillScalarWhereInput;
+  updateMany?:
+    | BillUpdateManyWithWhereNestedInput[]
+    | BillUpdateManyWithWhereNestedInput;
 }
 
 export type BillWhereUniqueInput = AtLeastOne<{
   id: ID_Input;
 }>;
-
-export interface PoliticianCreateWithoutNaysInput {
-  name: String;
-  party?: String;
-  bills?: BillCreateManyWithoutSponsorInput;
-  yeas?: BillCreateManyWithoutYeasInput;
-}
-
-export interface CommentUpsertWithoutLikesInput {
-  update: CommentUpdateWithoutLikesDataInput;
-  create: CommentCreateWithoutLikesInput;
-}
-
-export interface BillCreateManyWithoutNaysInput {
-  create?: BillCreateWithoutNaysInput[] | BillCreateWithoutNaysInput;
-  connect?: BillWhereUniqueInput[] | BillWhereUniqueInput;
-}
-
-export interface BillUpdateWithoutSponsorDataInput {
-  code?: String;
-  summary?: String;
-  likes?: LikeUpdateManyWithoutBillInput;
-  comments?: CommentUpdateManyWithoutBillInput;
-  yeas?: PoliticianUpdateManyWithoutYeasInput;
-  nays?: PoliticianUpdateManyWithoutNaysInput;
-}
-
-export interface BillCreateWithoutNaysInput {
-  code?: String;
-  summary?: String;
-  sponsor?: PoliticianCreateOneWithoutBillsInput;
-  likes?: LikeCreateManyWithoutBillInput;
-  comments?: CommentCreateManyWithoutBillInput;
-  yeas?: PoliticianCreateManyWithoutYeasInput;
-}
-
-export interface UserSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: UserWhereInput;
-  AND?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
-  OR?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
-  NOT?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
-}
 
 export interface BillUpdateInput {
   code?: String;
@@ -427,15 +393,10 @@ export interface BillUpdateInput {
   nays?: PoliticianUpdateManyWithoutNaysInput;
 }
 
-export interface PostSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: PostWhereInput;
-  AND?: PostSubscriptionWhereInput[] | PostSubscriptionWhereInput;
-  OR?: PostSubscriptionWhereInput[] | PostSubscriptionWhereInput;
-  NOT?: PostSubscriptionWhereInput[] | PostSubscriptionWhereInput;
+export interface LikeUpsertWithWhereUniqueWithoutBillInput {
+  where: LikeWhereUniqueInput;
+  update: LikeUpdateWithoutBillDataInput;
+  create: LikeCreateWithoutBillInput;
 }
 
 export interface PoliticianUpdateOneWithoutBillsInput {
@@ -447,15 +408,10 @@ export interface PoliticianUpdateOneWithoutBillsInput {
   connect?: PoliticianWhereUniqueInput;
 }
 
-export interface PoliticianSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: PoliticianWhereInput;
-  AND?: PoliticianSubscriptionWhereInput[] | PoliticianSubscriptionWhereInput;
-  OR?: PoliticianSubscriptionWhereInput[] | PoliticianSubscriptionWhereInput;
-  NOT?: PoliticianSubscriptionWhereInput[] | PoliticianSubscriptionWhereInput;
+export interface CommentUpdateWithoutBillDataInput {
+  content?: String;
+  author?: UserUpdateOneWithoutCommentsInput;
+  likes?: LikeUpdateManyWithoutCommentInput;
 }
 
 export interface PoliticianUpdateWithoutBillsDataInput {
@@ -465,15 +421,15 @@ export interface PoliticianUpdateWithoutBillsDataInput {
   nays?: BillUpdateManyWithoutNaysInput;
 }
 
-export interface CommentSubscriptionWhereInput {
+export interface UserSubscriptionWhereInput {
   mutation_in?: MutationType[] | MutationType;
   updatedFields_contains?: String;
   updatedFields_contains_every?: String[] | String;
   updatedFields_contains_some?: String[] | String;
-  node?: CommentWhereInput;
-  AND?: CommentSubscriptionWhereInput[] | CommentSubscriptionWhereInput;
-  OR?: CommentSubscriptionWhereInput[] | CommentSubscriptionWhereInput;
-  NOT?: CommentSubscriptionWhereInput[] | CommentSubscriptionWhereInput;
+  node?: UserWhereInput;
+  AND?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
+  OR?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
+  NOT?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
 }
 
 export interface BillUpdateManyWithoutYeasInput {
@@ -493,15 +449,15 @@ export interface BillUpdateManyWithoutYeasInput {
     | BillUpdateManyWithWhereNestedInput;
 }
 
-export interface BillSubscriptionWhereInput {
+export interface PostSubscriptionWhereInput {
   mutation_in?: MutationType[] | MutationType;
   updatedFields_contains?: String;
   updatedFields_contains_every?: String[] | String;
   updatedFields_contains_some?: String[] | String;
-  node?: BillWhereInput;
-  AND?: BillSubscriptionWhereInput[] | BillSubscriptionWhereInput;
-  OR?: BillSubscriptionWhereInput[] | BillSubscriptionWhereInput;
-  NOT?: BillSubscriptionWhereInput[] | BillSubscriptionWhereInput;
+  node?: PostWhereInput;
+  AND?: PostSubscriptionWhereInput[] | PostSubscriptionWhereInput;
+  OR?: PostSubscriptionWhereInput[] | PostSubscriptionWhereInput;
+  NOT?: PostSubscriptionWhereInput[] | PostSubscriptionWhereInput;
 }
 
 export interface BillUpdateWithWhereUniqueWithoutYeasInput {
@@ -509,10 +465,15 @@ export interface BillUpdateWithWhereUniqueWithoutYeasInput {
   data: BillUpdateWithoutYeasDataInput;
 }
 
-export interface UserUpdateManyMutationInput {
-  email?: String;
-  password?: String;
-  name?: String;
+export interface PoliticianSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: PoliticianWhereInput;
+  AND?: PoliticianSubscriptionWhereInput[] | PoliticianSubscriptionWhereInput;
+  OR?: PoliticianSubscriptionWhereInput[] | PoliticianSubscriptionWhereInput;
+  NOT?: PoliticianSubscriptionWhereInput[] | PoliticianSubscriptionWhereInput;
 }
 
 export interface BillUpdateWithoutYeasDataInput {
@@ -524,10 +485,15 @@ export interface BillUpdateWithoutYeasDataInput {
   nays?: PoliticianUpdateManyWithoutNaysInput;
 }
 
-export interface PostUpdateManyMutationInput {
-  published?: Boolean;
-  title?: String;
-  content?: String;
+export interface CommentSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: CommentWhereInput;
+  AND?: CommentSubscriptionWhereInput[] | CommentSubscriptionWhereInput;
+  OR?: CommentSubscriptionWhereInput[] | CommentSubscriptionWhereInput;
+  NOT?: CommentSubscriptionWhereInput[] | CommentSubscriptionWhereInput;
 }
 
 export interface LikeUpdateManyWithoutBillInput {
@@ -544,10 +510,15 @@ export interface LikeUpdateManyWithoutBillInput {
   deleteMany?: LikeScalarWhereInput[] | LikeScalarWhereInput;
 }
 
-export interface UserUpdateWithoutPostsDataInput {
-  email?: String;
-  password?: String;
-  name?: String;
+export interface BillSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: BillWhereInput;
+  AND?: BillSubscriptionWhereInput[] | BillSubscriptionWhereInput;
+  OR?: BillSubscriptionWhereInput[] | BillSubscriptionWhereInput;
+  NOT?: BillSubscriptionWhereInput[] | BillSubscriptionWhereInput;
 }
 
 export interface LikeUpdateWithWhereUniqueWithoutBillInput {
@@ -555,22 +526,24 @@ export interface LikeUpdateWithWhereUniqueWithoutBillInput {
   data: LikeUpdateWithoutBillDataInput;
 }
 
-export interface UserUpdateOneRequiredWithoutPostsInput {
-  create?: UserCreateWithoutPostsInput;
-  update?: UserUpdateWithoutPostsDataInput;
-  upsert?: UserUpsertWithoutPostsInput;
-  connect?: UserWhereUniqueInput;
+export interface UserUpdateManyMutationInput {
+  email?: String;
+  password?: String;
+  name?: String;
 }
 
 export interface LikeUpdateWithoutBillDataInput {
   comment?: CommentUpdateOneWithoutLikesInput;
-  user?: UserUpdateOneRequiredInput;
+  user?: UserUpdateOneRequiredWithoutLikesInput;
 }
 
-export interface UserCreateWithoutPostsInput {
+export interface UserCreateInput {
   email: String;
   password: String;
   name?: String;
+  posts?: PostCreateManyWithoutAuthorInput;
+  comments?: CommentCreateManyWithoutAuthorInput;
+  likes?: LikeCreateManyWithoutUserInput;
 }
 
 export interface CommentUpdateOneWithoutLikesInput {
@@ -582,20 +555,23 @@ export interface CommentUpdateOneWithoutLikesInput {
   connect?: CommentWhereUniqueInput;
 }
 
-export interface UserCreateOneWithoutPostsInput {
-  create?: UserCreateWithoutPostsInput;
-  connect?: UserWhereUniqueInput;
+export interface UserUpsertWithoutPostsInput {
+  update: UserUpdateWithoutPostsDataInput;
+  create: UserCreateWithoutPostsInput;
 }
 
 export interface CommentUpdateWithoutLikesDataInput {
   content?: String;
   bill?: BillUpdateOneWithoutCommentsInput;
-  author?: UserUpdateOneInput;
+  author?: UserUpdateOneWithoutCommentsInput;
 }
 
-export interface PoliticianUpdateManyMutationInput {
+export interface UserUpdateWithoutPostsDataInput {
+  email?: String;
+  password?: String;
   name?: String;
-  party?: String;
+  comments?: CommentUpdateManyWithoutAuthorInput;
+  likes?: LikeUpdateManyWithoutUserInput;
 }
 
 export interface BillUpdateOneWithoutCommentsInput {
@@ -607,12 +583,11 @@ export interface BillUpdateOneWithoutCommentsInput {
   connect?: BillWhereUniqueInput;
 }
 
-export interface PoliticianUpdateInput {
-  name?: String;
-  party?: String;
-  bills?: BillUpdateManyWithoutSponsorInput;
-  yeas?: BillUpdateManyWithoutYeasInput;
-  nays?: BillUpdateManyWithoutNaysInput;
+export interface PostUpdateInput {
+  published?: Boolean;
+  title?: String;
+  content?: String;
+  author?: UserUpdateOneRequiredWithoutPostsInput;
 }
 
 export interface BillUpdateWithoutCommentsDataInput {
@@ -624,10 +599,12 @@ export interface BillUpdateWithoutCommentsDataInput {
   nays?: PoliticianUpdateManyWithoutNaysInput;
 }
 
-export interface LikeUpdateInput {
-  bill?: BillUpdateOneWithoutLikesInput;
-  comment?: CommentUpdateOneWithoutLikesInput;
-  user?: UserUpdateOneRequiredInput;
+export interface UserCreateWithoutPostsInput {
+  email: String;
+  password: String;
+  name?: String;
+  comments?: CommentCreateManyWithoutAuthorInput;
+  likes?: LikeCreateManyWithoutUserInput;
 }
 
 export interface PoliticianUpdateManyWithoutYeasInput {
@@ -649,23 +626,21 @@ export interface PoliticianUpdateManyWithoutYeasInput {
     | PoliticianUpdateManyWithWhereNestedInput;
 }
 
-export interface LikeCreateInput {
-  bill?: BillCreateOneWithoutLikesInput;
-  comment?: CommentCreateOneWithoutLikesInput;
-  user: UserCreateOneInput;
-}
-
-export interface LikeUpsertWithWhereUniqueWithoutBillInput {
-  where: LikeWhereUniqueInput;
-  update: LikeUpdateWithoutBillDataInput;
-  create: LikeCreateWithoutBillInput;
-}
-
-export interface CommentUpdateInput {
+export interface PostCreateInput {
+  published?: Boolean;
+  title: String;
   content?: String;
-  bill?: BillUpdateOneWithoutCommentsInput;
-  author?: UserUpdateOneInput;
-  likes?: LikeUpdateManyWithoutCommentInput;
+  author: UserCreateOneWithoutPostsInput;
+}
+
+export interface PoliticianUpdateWithWhereUniqueWithoutYeasInput {
+  where: PoliticianWhereUniqueInput;
+  data: PoliticianUpdateWithoutYeasDataInput;
+}
+
+export interface PoliticianUpdateManyMutationInput {
+  name?: String;
+  party?: String;
 }
 
 export interface PoliticianUpdateWithoutYeasDataInput {
@@ -675,38 +650,76 @@ export interface PoliticianUpdateWithoutYeasDataInput {
   nays?: BillUpdateManyWithoutNaysInput;
 }
 
-export interface CommentCreateInput {
-  content: String;
-  bill?: BillCreateOneWithoutCommentsInput;
-  author?: UserCreateOneInput;
-  likes?: LikeCreateManyWithoutCommentInput;
+export interface PoliticianCreateInput {
+  name: String;
+  party?: String;
+  bills?: BillCreateManyWithoutSponsorInput;
+  yeas?: BillCreateManyWithoutYeasInput;
+  nays?: BillCreateManyWithoutNaysInput;
 }
 
-export interface BillUpdateManyWithoutSponsorInput {
-  create?: BillCreateWithoutSponsorInput[] | BillCreateWithoutSponsorInput;
-  delete?: BillWhereUniqueInput[] | BillWhereUniqueInput;
-  connect?: BillWhereUniqueInput[] | BillWhereUniqueInput;
-  disconnect?: BillWhereUniqueInput[] | BillWhereUniqueInput;
-  update?:
-    | BillUpdateWithWhereUniqueWithoutSponsorInput[]
-    | BillUpdateWithWhereUniqueWithoutSponsorInput;
-  upsert?:
-    | BillUpsertWithWhereUniqueWithoutSponsorInput[]
-    | BillUpsertWithWhereUniqueWithoutSponsorInput;
-  deleteMany?: BillScalarWhereInput[] | BillScalarWhereInput;
-  updateMany?:
-    | BillUpdateManyWithWhereNestedInput[]
-    | BillUpdateManyWithWhereNestedInput;
+export interface BillUpsertWithWhereUniqueWithoutYeasInput {
+  where: BillWhereUniqueInput;
+  update: BillUpdateWithoutYeasDataInput;
+  create: BillCreateWithoutYeasInput;
 }
 
-export interface PoliticianUpsertWithoutBillsInput {
-  update: PoliticianUpdateWithoutBillsDataInput;
-  create: PoliticianCreateWithoutBillsInput;
+export interface LikeUpdateInput {
+  bill?: BillUpdateOneWithoutLikesInput;
+  comment?: CommentUpdateOneWithoutLikesInput;
+  user?: UserUpdateOneRequiredWithoutLikesInput;
 }
 
 export interface BillUpdateWithWhereUniqueWithoutSponsorInput {
   where: BillWhereUniqueInput;
   data: BillUpdateWithoutSponsorDataInput;
+}
+
+export interface CommentUpdateManyMutationInput {
+  content?: String;
+}
+
+export interface BillUpdateWithoutSponsorDataInput {
+  code?: String;
+  summary?: String;
+  likes?: LikeUpdateManyWithoutBillInput;
+  comments?: CommentUpdateManyWithoutBillInput;
+  yeas?: PoliticianUpdateManyWithoutYeasInput;
+  nays?: PoliticianUpdateManyWithoutNaysInput;
+}
+
+export interface CommentUpdateInput {
+  content?: String;
+  bill?: BillUpdateOneWithoutCommentsInput;
+  author?: UserUpdateOneWithoutCommentsInput;
+  likes?: LikeUpdateManyWithoutCommentInput;
+}
+
+export interface CommentUpdateManyWithoutBillInput {
+  create?: CommentCreateWithoutBillInput[] | CommentCreateWithoutBillInput;
+  delete?: CommentWhereUniqueInput[] | CommentWhereUniqueInput;
+  connect?: CommentWhereUniqueInput[] | CommentWhereUniqueInput;
+  disconnect?: CommentWhereUniqueInput[] | CommentWhereUniqueInput;
+  update?:
+    | CommentUpdateWithWhereUniqueWithoutBillInput[]
+    | CommentUpdateWithWhereUniqueWithoutBillInput;
+  upsert?:
+    | CommentUpsertWithWhereUniqueWithoutBillInput[]
+    | CommentUpsertWithWhereUniqueWithoutBillInput;
+  deleteMany?: CommentScalarWhereInput[] | CommentScalarWhereInput;
+  updateMany?:
+    | CommentUpdateManyWithWhereNestedInput[]
+    | CommentUpdateManyWithWhereNestedInput;
+}
+
+export interface BillUpdateManyMutationInput {
+  code?: String;
+  summary?: String;
+}
+
+export interface CommentUpdateWithWhereUniqueWithoutBillInput {
+  where: CommentWhereUniqueInput;
+  data: CommentUpdateWithoutBillDataInput;
 }
 
 export interface PoliticianCreateOneWithoutBillsInput {
@@ -774,6 +787,12 @@ export interface UserWhereInput {
   posts_every?: PostWhereInput;
   posts_some?: PostWhereInput;
   posts_none?: PostWhereInput;
+  comments_every?: CommentWhereInput;
+  comments_some?: CommentWhereInput;
+  comments_none?: CommentWhereInput;
+  likes_every?: LikeWhereInput;
+  likes_some?: LikeWhereInput;
+  likes_none?: LikeWhereInput;
   AND?: UserWhereInput[] | UserWhereInput;
   OR?: UserWhereInput[] | UserWhereInput;
   NOT?: UserWhereInput[] | UserWhereInput;
@@ -784,21 +803,13 @@ export interface BillCreateManyWithoutYeasInput {
   connect?: BillWhereUniqueInput[] | BillWhereUniqueInput;
 }
 
-export interface CommentUpdateManyWithoutBillInput {
-  create?: CommentCreateWithoutBillInput[] | CommentCreateWithoutBillInput;
-  delete?: CommentWhereUniqueInput[] | CommentWhereUniqueInput;
-  connect?: CommentWhereUniqueInput[] | CommentWhereUniqueInput;
-  disconnect?: CommentWhereUniqueInput[] | CommentWhereUniqueInput;
-  update?:
-    | CommentUpdateWithWhereUniqueWithoutBillInput[]
-    | CommentUpdateWithWhereUniqueWithoutBillInput;
-  upsert?:
-    | CommentUpsertWithWhereUniqueWithoutBillInput[]
-    | CommentUpsertWithWhereUniqueWithoutBillInput;
-  deleteMany?: CommentScalarWhereInput[] | CommentScalarWhereInput;
-  updateMany?:
-    | CommentUpdateManyWithWhereNestedInput[]
-    | CommentUpdateManyWithWhereNestedInput;
+export interface UserUpdateOneWithoutCommentsInput {
+  create?: UserCreateWithoutCommentsInput;
+  update?: UserUpdateWithoutCommentsDataInput;
+  upsert?: UserUpsertWithoutCommentsInput;
+  delete?: Boolean;
+  disconnect?: Boolean;
+  connect?: UserWhereUniqueInput;
 }
 
 export interface LikeCreateManyWithoutBillInput {
@@ -806,53 +817,17 @@ export interface LikeCreateManyWithoutBillInput {
   connect?: LikeWhereUniqueInput[] | LikeWhereUniqueInput;
 }
 
-export interface CommentUpdateWithWhereUniqueWithoutBillInput {
-  where: CommentWhereUniqueInput;
-  data: CommentUpdateWithoutBillDataInput;
+export interface UserUpdateWithoutCommentsDataInput {
+  email?: String;
+  password?: String;
+  name?: String;
+  posts?: PostUpdateManyWithoutAuthorInput;
+  likes?: LikeUpdateManyWithoutUserInput;
 }
 
 export interface CommentCreateOneWithoutLikesInput {
   create?: CommentCreateWithoutLikesInput;
   connect?: CommentWhereUniqueInput;
-}
-
-export interface CommentUpdateWithoutBillDataInput {
-  content?: String;
-  author?: UserUpdateOneInput;
-  likes?: LikeUpdateManyWithoutCommentInput;
-}
-
-export interface BillCreateOneWithoutCommentsInput {
-  create?: BillCreateWithoutCommentsInput;
-  connect?: BillWhereUniqueInput;
-}
-
-export interface UserUpdateOneInput {
-  create?: UserCreateInput;
-  update?: UserUpdateDataInput;
-  upsert?: UserUpsertNestedInput;
-  delete?: Boolean;
-  disconnect?: Boolean;
-  connect?: UserWhereUniqueInput;
-}
-
-export interface PoliticianCreateManyWithoutYeasInput {
-  create?:
-    | PoliticianCreateWithoutYeasInput[]
-    | PoliticianCreateWithoutYeasInput;
-  connect?: PoliticianWhereUniqueInput[] | PoliticianWhereUniqueInput;
-}
-
-export interface UserUpdateDataInput {
-  email?: String;
-  password?: String;
-  name?: String;
-  posts?: PostUpdateManyWithoutAuthorInput;
-}
-
-export interface BillCreateManyWithoutSponsorInput {
-  create?: BillCreateWithoutSponsorInput[] | BillCreateWithoutSponsorInput;
-  connect?: BillWhereUniqueInput[] | BillWhereUniqueInput;
 }
 
 export interface PostUpdateManyWithoutAuthorInput {
@@ -872,9 +847,9 @@ export interface PostUpdateManyWithoutAuthorInput {
     | PostUpdateManyWithWhereNestedInput;
 }
 
-export interface CommentCreateManyWithoutBillInput {
-  create?: CommentCreateWithoutBillInput[] | CommentCreateWithoutBillInput;
-  connect?: CommentWhereUniqueInput[] | CommentWhereUniqueInput;
+export interface BillCreateOneWithoutCommentsInput {
+  create?: BillCreateWithoutCommentsInput;
+  connect?: BillWhereUniqueInput;
 }
 
 export interface PostUpdateWithWhereUniqueWithoutAuthorInput {
@@ -882,9 +857,11 @@ export interface PostUpdateWithWhereUniqueWithoutAuthorInput {
   data: PostUpdateWithoutAuthorDataInput;
 }
 
-export interface UserCreateOneInput {
-  create?: UserCreateInput;
-  connect?: UserWhereUniqueInput;
+export interface PoliticianCreateManyWithoutYeasInput {
+  create?:
+    | PoliticianCreateWithoutYeasInput[]
+    | PoliticianCreateWithoutYeasInput;
+  connect?: PoliticianWhereUniqueInput[] | PoliticianWhereUniqueInput;
 }
 
 export interface PostUpdateWithoutAuthorDataInput {
@@ -893,9 +870,9 @@ export interface PostUpdateWithoutAuthorDataInput {
   content?: String;
 }
 
-export interface PostCreateManyWithoutAuthorInput {
-  create?: PostCreateWithoutAuthorInput[] | PostCreateWithoutAuthorInput;
-  connect?: PostWhereUniqueInput[] | PostWhereUniqueInput;
+export interface BillCreateManyWithoutSponsorInput {
+  create?: BillCreateWithoutSponsorInput[] | BillCreateWithoutSponsorInput;
+  connect?: BillWhereUniqueInput[] | BillWhereUniqueInput;
 }
 
 export interface PostUpsertWithWhereUniqueWithoutAuthorInput {
@@ -904,9 +881,9 @@ export interface PostUpsertWithWhereUniqueWithoutAuthorInput {
   create: PostCreateWithoutAuthorInput;
 }
 
-export interface LikeCreateManyWithoutCommentInput {
-  create?: LikeCreateWithoutCommentInput[] | LikeCreateWithoutCommentInput;
-  connect?: LikeWhereUniqueInput[] | LikeWhereUniqueInput;
+export interface CommentCreateManyWithoutBillInput {
+  create?: CommentCreateWithoutBillInput[] | CommentCreateWithoutBillInput;
+  connect?: CommentWhereUniqueInput[] | CommentWhereUniqueInput;
 }
 
 export interface PostScalarWhereInput {
@@ -975,14 +952,54 @@ export interface PostScalarWhereInput {
   NOT?: PostScalarWhereInput[] | PostScalarWhereInput;
 }
 
-export interface BillCreateOneWithoutLikesInput {
-  create?: BillCreateWithoutLikesInput;
-  connect?: BillWhereUniqueInput;
+export interface UserCreateOneWithoutCommentsInput {
+  create?: UserCreateWithoutCommentsInput;
+  connect?: UserWhereUniqueInput;
 }
 
 export interface PostUpdateManyWithWhereNestedInput {
   where: PostScalarWhereInput;
   data: PostUpdateManyDataInput;
+}
+
+export interface PostCreateManyWithoutAuthorInput {
+  create?: PostCreateWithoutAuthorInput[] | PostCreateWithoutAuthorInput;
+  connect?: PostWhereUniqueInput[] | PostWhereUniqueInput;
+}
+
+export interface PostUpdateManyDataInput {
+  published?: Boolean;
+  title?: String;
+  content?: String;
+}
+
+export interface LikeCreateManyWithoutUserInput {
+  create?: LikeCreateWithoutUserInput[] | LikeCreateWithoutUserInput;
+  connect?: LikeWhereUniqueInput[] | LikeWhereUniqueInput;
+}
+
+export interface LikeUpdateManyWithoutUserInput {
+  create?: LikeCreateWithoutUserInput[] | LikeCreateWithoutUserInput;
+  delete?: LikeWhereUniqueInput[] | LikeWhereUniqueInput;
+  connect?: LikeWhereUniqueInput[] | LikeWhereUniqueInput;
+  disconnect?: LikeWhereUniqueInput[] | LikeWhereUniqueInput;
+  update?:
+    | LikeUpdateWithWhereUniqueWithoutUserInput[]
+    | LikeUpdateWithWhereUniqueWithoutUserInput;
+  upsert?:
+    | LikeUpsertWithWhereUniqueWithoutUserInput[]
+    | LikeUpsertWithWhereUniqueWithoutUserInput;
+  deleteMany?: LikeScalarWhereInput[] | LikeScalarWhereInput;
+}
+
+export interface BillCreateOneWithoutLikesInput {
+  create?: BillCreateWithoutLikesInput;
+  connect?: BillWhereUniqueInput;
+}
+
+export interface LikeUpdateWithWhereUniqueWithoutUserInput {
+  where: LikeWhereUniqueInput;
+  data: LikeUpdateWithoutUserDataInput;
 }
 
 export interface PoliticianCreateManyWithoutNaysInput {
@@ -992,170 +1009,14 @@ export interface PoliticianCreateManyWithoutNaysInput {
   connect?: PoliticianWhereUniqueInput[] | PoliticianWhereUniqueInput;
 }
 
-export interface PostUpdateManyDataInput {
-  published?: Boolean;
-  title?: String;
-  content?: String;
-}
-
-export interface CommentWhereInput {
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-  createdAt?: DateTimeInput;
-  createdAt_not?: DateTimeInput;
-  createdAt_in?: DateTimeInput[] | DateTimeInput;
-  createdAt_not_in?: DateTimeInput[] | DateTimeInput;
-  createdAt_lt?: DateTimeInput;
-  createdAt_lte?: DateTimeInput;
-  createdAt_gt?: DateTimeInput;
-  createdAt_gte?: DateTimeInput;
-  content?: String;
-  content_not?: String;
-  content_in?: String[] | String;
-  content_not_in?: String[] | String;
-  content_lt?: String;
-  content_lte?: String;
-  content_gt?: String;
-  content_gte?: String;
-  content_contains?: String;
-  content_not_contains?: String;
-  content_starts_with?: String;
-  content_not_starts_with?: String;
-  content_ends_with?: String;
-  content_not_ends_with?: String;
-  bill?: BillWhereInput;
-  author?: UserWhereInput;
-  likes_every?: LikeWhereInput;
-  likes_some?: LikeWhereInput;
-  likes_none?: LikeWhereInput;
-  AND?: CommentWhereInput[] | CommentWhereInput;
-  OR?: CommentWhereInput[] | CommentWhereInput;
-  NOT?: CommentWhereInput[] | CommentWhereInput;
-}
-
-export interface UserUpsertNestedInput {
-  update: UserUpdateDataInput;
-  create: UserCreateInput;
-}
-
-export interface LikeSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: LikeWhereInput;
-  AND?: LikeSubscriptionWhereInput[] | LikeSubscriptionWhereInput;
-  OR?: LikeSubscriptionWhereInput[] | LikeSubscriptionWhereInput;
-  NOT?: LikeSubscriptionWhereInput[] | LikeSubscriptionWhereInput;
-}
-
-export interface LikeUpdateManyWithoutCommentInput {
-  create?: LikeCreateWithoutCommentInput[] | LikeCreateWithoutCommentInput;
-  delete?: LikeWhereUniqueInput[] | LikeWhereUniqueInput;
-  connect?: LikeWhereUniqueInput[] | LikeWhereUniqueInput;
-  disconnect?: LikeWhereUniqueInput[] | LikeWhereUniqueInput;
-  update?:
-    | LikeUpdateWithWhereUniqueWithoutCommentInput[]
-    | LikeUpdateWithWhereUniqueWithoutCommentInput;
-  upsert?:
-    | LikeUpsertWithWhereUniqueWithoutCommentInput[]
-    | LikeUpsertWithWhereUniqueWithoutCommentInput;
-  deleteMany?: LikeScalarWhereInput[] | LikeScalarWhereInput;
-}
-
-export interface BillWhereInput {
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-  code?: String;
-  code_not?: String;
-  code_in?: String[] | String;
-  code_not_in?: String[] | String;
-  code_lt?: String;
-  code_lte?: String;
-  code_gt?: String;
-  code_gte?: String;
-  code_contains?: String;
-  code_not_contains?: String;
-  code_starts_with?: String;
-  code_not_starts_with?: String;
-  code_ends_with?: String;
-  code_not_ends_with?: String;
-  summary?: String;
-  summary_not?: String;
-  summary_in?: String[] | String;
-  summary_not_in?: String[] | String;
-  summary_lt?: String;
-  summary_lte?: String;
-  summary_gt?: String;
-  summary_gte?: String;
-  summary_contains?: String;
-  summary_not_contains?: String;
-  summary_starts_with?: String;
-  summary_not_starts_with?: String;
-  summary_ends_with?: String;
-  summary_not_ends_with?: String;
-  sponsor?: PoliticianWhereInput;
-  likes_every?: LikeWhereInput;
-  likes_some?: LikeWhereInput;
-  likes_none?: LikeWhereInput;
-  comments_every?: CommentWhereInput;
-  comments_some?: CommentWhereInput;
-  comments_none?: CommentWhereInput;
-  yeas_every?: PoliticianWhereInput;
-  yeas_some?: PoliticianWhereInput;
-  yeas_none?: PoliticianWhereInput;
-  nays_every?: PoliticianWhereInput;
-  nays_some?: PoliticianWhereInput;
-  nays_none?: PoliticianWhereInput;
-  AND?: BillWhereInput[] | BillWhereInput;
-  OR?: BillWhereInput[] | BillWhereInput;
-  NOT?: BillWhereInput[] | BillWhereInput;
-}
-
-export interface LikeUpdateWithWhereUniqueWithoutCommentInput {
-  where: LikeWhereUniqueInput;
-  data: LikeUpdateWithoutCommentDataInput;
-}
-
-export interface UserUpsertWithoutPostsInput {
-  update: UserUpdateWithoutPostsDataInput;
-  create: UserCreateWithoutPostsInput;
-}
-
-export interface LikeUpdateWithoutCommentDataInput {
+export interface LikeUpdateWithoutUserDataInput {
   bill?: BillUpdateOneWithoutLikesInput;
-  user?: UserUpdateOneRequiredInput;
+  comment?: CommentUpdateOneWithoutLikesInput;
 }
 
-export interface PostUpdateInput {
-  published?: Boolean;
-  title?: String;
-  content?: String;
-  author?: UserUpdateOneRequiredWithoutPostsInput;
+export interface LikeCreateManyWithoutCommentInput {
+  create?: LikeCreateWithoutCommentInput[] | LikeCreateWithoutCommentInput;
+  connect?: LikeWhereUniqueInput[] | LikeWhereUniqueInput;
 }
 
 export interface BillUpdateOneWithoutLikesInput {
@@ -1167,11 +1028,9 @@ export interface BillUpdateOneWithoutLikesInput {
   connect?: BillWhereUniqueInput;
 }
 
-export interface PostCreateInput {
-  published?: Boolean;
-  title: String;
-  content?: String;
-  author: UserCreateOneWithoutPostsInput;
+export interface UserCreateOneWithoutLikesInput {
+  create?: UserCreateWithoutLikesInput;
+  connect?: UserWhereUniqueInput;
 }
 
 export interface BillUpdateWithoutLikesDataInput {
@@ -1183,12 +1042,9 @@ export interface BillUpdateWithoutLikesDataInput {
   nays?: PoliticianUpdateManyWithoutNaysInput;
 }
 
-export interface PoliticianCreateInput {
-  name: String;
-  party?: String;
-  bills?: BillCreateManyWithoutSponsorInput;
-  yeas?: BillCreateManyWithoutYeasInput;
-  nays?: BillCreateManyWithoutNaysInput;
+export interface CommentCreateManyWithoutAuthorInput {
+  create?: CommentCreateWithoutAuthorInput[] | CommentCreateWithoutAuthorInput;
+  connect?: CommentWhereUniqueInput[] | CommentWhereUniqueInput;
 }
 
 export interface PoliticianUpdateManyWithoutNaysInput {
@@ -1210,487 +1066,14 @@ export interface PoliticianUpdateManyWithoutNaysInput {
     | PoliticianUpdateManyWithWhereNestedInput;
 }
 
-export interface CommentUpdateManyMutationInput {
-  content?: String;
+export interface BillCreateManyWithoutNaysInput {
+  create?: BillCreateWithoutNaysInput[] | BillCreateWithoutNaysInput;
+  connect?: BillWhereUniqueInput[] | BillWhereUniqueInput;
 }
 
 export interface PoliticianUpdateWithWhereUniqueWithoutNaysInput {
   where: PoliticianWhereUniqueInput;
   data: PoliticianUpdateWithoutNaysDataInput;
-}
-
-export interface BillUpdateManyMutationInput {
-  code?: String;
-  summary?: String;
-}
-
-export interface PoliticianUpdateWithoutNaysDataInput {
-  name?: String;
-  party?: String;
-  bills?: BillUpdateManyWithoutSponsorInput;
-  yeas?: BillUpdateManyWithoutYeasInput;
-}
-
-export interface BillCreateInput {
-  code?: String;
-  summary?: String;
-  sponsor?: PoliticianCreateOneWithoutBillsInput;
-  likes?: LikeCreateManyWithoutBillInput;
-  comments?: CommentCreateManyWithoutBillInput;
-  yeas?: PoliticianCreateManyWithoutYeasInput;
-  nays?: PoliticianCreateManyWithoutNaysInput;
-}
-
-export interface PoliticianUpsertWithWhereUniqueWithoutNaysInput {
-  where: PoliticianWhereUniqueInput;
-  update: PoliticianUpdateWithoutNaysDataInput;
-  create: PoliticianCreateWithoutNaysInput;
-}
-
-export interface BillCreateWithoutYeasInput {
-  code?: String;
-  summary?: String;
-  sponsor?: PoliticianCreateOneWithoutBillsInput;
-  likes?: LikeCreateManyWithoutBillInput;
-  comments?: CommentCreateManyWithoutBillInput;
-  nays?: PoliticianCreateManyWithoutNaysInput;
-}
-
-export interface PoliticianScalarWhereInput {
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-  name?: String;
-  name_not?: String;
-  name_in?: String[] | String;
-  name_not_in?: String[] | String;
-  name_lt?: String;
-  name_lte?: String;
-  name_gt?: String;
-  name_gte?: String;
-  name_contains?: String;
-  name_not_contains?: String;
-  name_starts_with?: String;
-  name_not_starts_with?: String;
-  name_ends_with?: String;
-  name_not_ends_with?: String;
-  party?: String;
-  party_not?: String;
-  party_in?: String[] | String;
-  party_not_in?: String[] | String;
-  party_lt?: String;
-  party_lte?: String;
-  party_gt?: String;
-  party_gte?: String;
-  party_contains?: String;
-  party_not_contains?: String;
-  party_starts_with?: String;
-  party_not_starts_with?: String;
-  party_ends_with?: String;
-  party_not_ends_with?: String;
-  AND?: PoliticianScalarWhereInput[] | PoliticianScalarWhereInput;
-  OR?: PoliticianScalarWhereInput[] | PoliticianScalarWhereInput;
-  NOT?: PoliticianScalarWhereInput[] | PoliticianScalarWhereInput;
-}
-
-export interface CommentCreateWithoutLikesInput {
-  content: String;
-  bill?: BillCreateOneWithoutCommentsInput;
-  author?: UserCreateOneInput;
-}
-
-export interface PoliticianUpdateManyWithWhereNestedInput {
-  where: PoliticianScalarWhereInput;
-  data: PoliticianUpdateManyDataInput;
-}
-
-export interface PoliticianCreateWithoutYeasInput {
-  name: String;
-  party?: String;
-  bills?: BillCreateManyWithoutSponsorInput;
-  nays?: BillCreateManyWithoutNaysInput;
-}
-
-export interface PoliticianUpdateManyDataInput {
-  name?: String;
-  party?: String;
-}
-
-export interface CommentCreateWithoutBillInput {
-  content: String;
-  author?: UserCreateOneInput;
-  likes?: LikeCreateManyWithoutCommentInput;
-}
-
-export interface BillUpsertWithoutLikesInput {
-  update: BillUpdateWithoutLikesDataInput;
-  create: BillCreateWithoutLikesInput;
-}
-
-export interface PostCreateWithoutAuthorInput {
-  published?: Boolean;
-  title: String;
-  content?: String;
-}
-
-export interface UserUpdateOneRequiredInput {
-  create?: UserCreateInput;
-  update?: UserUpdateDataInput;
-  upsert?: UserUpsertNestedInput;
-  connect?: UserWhereUniqueInput;
-}
-
-export interface BillCreateWithoutLikesInput {
-  code?: String;
-  summary?: String;
-  sponsor?: PoliticianCreateOneWithoutBillsInput;
-  comments?: CommentCreateManyWithoutBillInput;
-  yeas?: PoliticianCreateManyWithoutYeasInput;
-  nays?: PoliticianCreateManyWithoutNaysInput;
-}
-
-export interface LikeUpsertWithWhereUniqueWithoutCommentInput {
-  where: LikeWhereUniqueInput;
-  update: LikeUpdateWithoutCommentDataInput;
-  create: LikeCreateWithoutCommentInput;
-}
-
-export interface LikeWhereInput {
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-  bill?: BillWhereInput;
-  comment?: CommentWhereInput;
-  user?: UserWhereInput;
-  AND?: LikeWhereInput[] | LikeWhereInput;
-  OR?: LikeWhereInput[] | LikeWhereInput;
-  NOT?: LikeWhereInput[] | LikeWhereInput;
-}
-
-export interface LikeScalarWhereInput {
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-  AND?: LikeScalarWhereInput[] | LikeScalarWhereInput;
-  OR?: LikeScalarWhereInput[] | LikeScalarWhereInput;
-  NOT?: LikeScalarWhereInput[] | LikeScalarWhereInput;
-}
-
-export interface UserUpdateInput {
-  email?: String;
-  password?: String;
-  name?: String;
-  posts?: PostUpdateManyWithoutAuthorInput;
-}
-
-export interface CommentUpsertWithWhereUniqueWithoutBillInput {
-  where: CommentWhereUniqueInput;
-  update: CommentUpdateWithoutBillDataInput;
-  create: CommentCreateWithoutBillInput;
-}
-
-export type LikeWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-}>;
-
-export interface CommentScalarWhereInput {
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-  createdAt?: DateTimeInput;
-  createdAt_not?: DateTimeInput;
-  createdAt_in?: DateTimeInput[] | DateTimeInput;
-  createdAt_not_in?: DateTimeInput[] | DateTimeInput;
-  createdAt_lt?: DateTimeInput;
-  createdAt_lte?: DateTimeInput;
-  createdAt_gt?: DateTimeInput;
-  createdAt_gte?: DateTimeInput;
-  content?: String;
-  content_not?: String;
-  content_in?: String[] | String;
-  content_not_in?: String[] | String;
-  content_lt?: String;
-  content_lte?: String;
-  content_gt?: String;
-  content_gte?: String;
-  content_contains?: String;
-  content_not_contains?: String;
-  content_starts_with?: String;
-  content_not_starts_with?: String;
-  content_ends_with?: String;
-  content_not_ends_with?: String;
-  AND?: CommentScalarWhereInput[] | CommentScalarWhereInput;
-  OR?: CommentScalarWhereInput[] | CommentScalarWhereInput;
-  NOT?: CommentScalarWhereInput[] | CommentScalarWhereInput;
-}
-
-export type PostWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-}>;
-
-export interface CommentUpdateManyWithWhereNestedInput {
-  where: CommentScalarWhereInput;
-  data: CommentUpdateManyDataInput;
-}
-
-export interface BillUpsertWithWhereUniqueWithoutYeasInput {
-  where: BillWhereUniqueInput;
-  update: BillUpdateWithoutYeasDataInput;
-  create: BillCreateWithoutYeasInput;
-}
-
-export interface CommentUpdateManyDataInput {
-  content?: String;
-}
-
-export interface LikeCreateWithoutBillInput {
-  comment?: CommentCreateOneWithoutLikesInput;
-  user: UserCreateOneInput;
-}
-
-export interface BillUpsertWithWhereUniqueWithoutSponsorInput {
-  where: BillWhereUniqueInput;
-  update: BillUpdateWithoutSponsorDataInput;
-  create: BillCreateWithoutSponsorInput;
-}
-
-export interface BillCreateWithoutSponsorInput {
-  code?: String;
-  summary?: String;
-  likes?: LikeCreateManyWithoutBillInput;
-  comments?: CommentCreateManyWithoutBillInput;
-  yeas?: PoliticianCreateManyWithoutYeasInput;
-  nays?: PoliticianCreateManyWithoutNaysInput;
-}
-
-export interface BillScalarWhereInput {
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-  code?: String;
-  code_not?: String;
-  code_in?: String[] | String;
-  code_not_in?: String[] | String;
-  code_lt?: String;
-  code_lte?: String;
-  code_gt?: String;
-  code_gte?: String;
-  code_contains?: String;
-  code_not_contains?: String;
-  code_starts_with?: String;
-  code_not_starts_with?: String;
-  code_ends_with?: String;
-  code_not_ends_with?: String;
-  summary?: String;
-  summary_not?: String;
-  summary_in?: String[] | String;
-  summary_not_in?: String[] | String;
-  summary_lt?: String;
-  summary_lte?: String;
-  summary_gt?: String;
-  summary_gte?: String;
-  summary_contains?: String;
-  summary_not_contains?: String;
-  summary_starts_with?: String;
-  summary_not_starts_with?: String;
-  summary_ends_with?: String;
-  summary_not_ends_with?: String;
-  AND?: BillScalarWhereInput[] | BillScalarWhereInput;
-  OR?: BillScalarWhereInput[] | BillScalarWhereInput;
-  NOT?: BillScalarWhereInput[] | BillScalarWhereInput;
-}
-
-export interface LikeCreateWithoutCommentInput {
-  bill?: BillCreateOneWithoutLikesInput;
-  user: UserCreateOneInput;
-}
-
-export interface BillUpdateManyWithWhereNestedInput {
-  where: BillScalarWhereInput;
-  data: BillUpdateManyDataInput;
-}
-
-export interface PoliticianWhereInput {
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-  name?: String;
-  name_not?: String;
-  name_in?: String[] | String;
-  name_not_in?: String[] | String;
-  name_lt?: String;
-  name_lte?: String;
-  name_gt?: String;
-  name_gte?: String;
-  name_contains?: String;
-  name_not_contains?: String;
-  name_starts_with?: String;
-  name_not_starts_with?: String;
-  name_ends_with?: String;
-  name_not_ends_with?: String;
-  party?: String;
-  party_not?: String;
-  party_in?: String[] | String;
-  party_not_in?: String[] | String;
-  party_lt?: String;
-  party_lte?: String;
-  party_gt?: String;
-  party_gte?: String;
-  party_contains?: String;
-  party_not_contains?: String;
-  party_starts_with?: String;
-  party_not_starts_with?: String;
-  party_ends_with?: String;
-  party_not_ends_with?: String;
-  bills_every?: BillWhereInput;
-  bills_some?: BillWhereInput;
-  bills_none?: BillWhereInput;
-  yeas_every?: BillWhereInput;
-  yeas_some?: BillWhereInput;
-  yeas_none?: BillWhereInput;
-  nays_every?: BillWhereInput;
-  nays_some?: BillWhereInput;
-  nays_none?: BillWhereInput;
-  AND?: PoliticianWhereInput[] | PoliticianWhereInput;
-  OR?: PoliticianWhereInput[] | PoliticianWhereInput;
-  NOT?: PoliticianWhereInput[] | PoliticianWhereInput;
-}
-
-export interface BillUpdateManyDataInput {
-  code?: String;
-  summary?: String;
-}
-
-export type PoliticianWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-}>;
-
-export interface BillUpdateManyWithoutNaysInput {
-  create?: BillCreateWithoutNaysInput[] | BillCreateWithoutNaysInput;
-  delete?: BillWhereUniqueInput[] | BillWhereUniqueInput;
-  connect?: BillWhereUniqueInput[] | BillWhereUniqueInput;
-  disconnect?: BillWhereUniqueInput[] | BillWhereUniqueInput;
-  update?:
-    | BillUpdateWithWhereUniqueWithoutNaysInput[]
-    | BillUpdateWithWhereUniqueWithoutNaysInput;
-  upsert?:
-    | BillUpsertWithWhereUniqueWithoutNaysInput[]
-    | BillUpsertWithWhereUniqueWithoutNaysInput;
-  deleteMany?: BillScalarWhereInput[] | BillScalarWhereInput;
-  updateMany?:
-    | BillUpdateManyWithWhereNestedInput[]
-    | BillUpdateManyWithWhereNestedInput;
-}
-
-export interface PoliticianCreateWithoutBillsInput {
-  name: String;
-  party?: String;
-  yeas?: BillCreateManyWithoutYeasInput;
-  nays?: BillCreateManyWithoutNaysInput;
-}
-
-export interface BillUpdateWithWhereUniqueWithoutNaysInput {
-  where: BillWhereUniqueInput;
-  data: BillUpdateWithoutNaysDataInput;
-}
-
-export interface UserCreateInput {
-  email: String;
-  password: String;
-  name?: String;
-  posts?: PostCreateManyWithoutAuthorInput;
-}
-
-export interface BillUpsertWithoutCommentsInput {
-  update: BillUpdateWithoutCommentsDataInput;
-  create: BillCreateWithoutCommentsInput;
-}
-
-export interface PoliticianUpsertWithWhereUniqueWithoutYeasInput {
-  where: PoliticianWhereUniqueInput;
-  update: PoliticianUpdateWithoutYeasDataInput;
-  create: PoliticianCreateWithoutYeasInput;
-}
-
-export interface BillUpsertWithWhereUniqueWithoutNaysInput {
-  where: BillWhereUniqueInput;
-  update: BillUpdateWithoutNaysDataInput;
-  create: BillCreateWithoutNaysInput;
-}
-
-export interface BillUpdateWithoutNaysDataInput {
-  code?: String;
-  summary?: String;
-  sponsor?: PoliticianUpdateOneWithoutBillsInput;
-  likes?: LikeUpdateManyWithoutBillInput;
-  comments?: CommentUpdateManyWithoutBillInput;
-  yeas?: PoliticianUpdateManyWithoutYeasInput;
 }
 
 export interface PostWhereInput {
@@ -1760,6 +1143,264 @@ export interface PostWhereInput {
   NOT?: PostWhereInput[] | PostWhereInput;
 }
 
+export interface PoliticianUpdateWithoutNaysDataInput {
+  name?: String;
+  party?: String;
+  bills?: BillUpdateManyWithoutSponsorInput;
+  yeas?: BillUpdateManyWithoutYeasInput;
+}
+
+export interface LikeWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  bill?: BillWhereInput;
+  comment?: CommentWhereInput;
+  user?: UserWhereInput;
+  AND?: LikeWhereInput[] | LikeWhereInput;
+  OR?: LikeWhereInput[] | LikeWhereInput;
+  NOT?: LikeWhereInput[] | LikeWhereInput;
+}
+
+export interface PoliticianUpsertWithWhereUniqueWithoutNaysInput {
+  where: PoliticianWhereUniqueInput;
+  update: PoliticianUpdateWithoutNaysDataInput;
+  create: PoliticianCreateWithoutNaysInput;
+}
+
+export interface PoliticianWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  name?: String;
+  name_not?: String;
+  name_in?: String[] | String;
+  name_not_in?: String[] | String;
+  name_lt?: String;
+  name_lte?: String;
+  name_gt?: String;
+  name_gte?: String;
+  name_contains?: String;
+  name_not_contains?: String;
+  name_starts_with?: String;
+  name_not_starts_with?: String;
+  name_ends_with?: String;
+  name_not_ends_with?: String;
+  party?: String;
+  party_not?: String;
+  party_in?: String[] | String;
+  party_not_in?: String[] | String;
+  party_lt?: String;
+  party_lte?: String;
+  party_gt?: String;
+  party_gte?: String;
+  party_contains?: String;
+  party_not_contains?: String;
+  party_starts_with?: String;
+  party_not_starts_with?: String;
+  party_ends_with?: String;
+  party_not_ends_with?: String;
+  bills_every?: BillWhereInput;
+  bills_some?: BillWhereInput;
+  bills_none?: BillWhereInput;
+  yeas_every?: BillWhereInput;
+  yeas_some?: BillWhereInput;
+  yeas_none?: BillWhereInput;
+  nays_every?: BillWhereInput;
+  nays_some?: BillWhereInput;
+  nays_none?: BillWhereInput;
+  AND?: PoliticianWhereInput[] | PoliticianWhereInput;
+  OR?: PoliticianWhereInput[] | PoliticianWhereInput;
+  NOT?: PoliticianWhereInput[] | PoliticianWhereInput;
+}
+
+export interface PoliticianScalarWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  name?: String;
+  name_not?: String;
+  name_in?: String[] | String;
+  name_not_in?: String[] | String;
+  name_lt?: String;
+  name_lte?: String;
+  name_gt?: String;
+  name_gte?: String;
+  name_contains?: String;
+  name_not_contains?: String;
+  name_starts_with?: String;
+  name_not_starts_with?: String;
+  name_ends_with?: String;
+  name_not_ends_with?: String;
+  party?: String;
+  party_not?: String;
+  party_in?: String[] | String;
+  party_not_in?: String[] | String;
+  party_lt?: String;
+  party_lte?: String;
+  party_gt?: String;
+  party_gte?: String;
+  party_contains?: String;
+  party_not_contains?: String;
+  party_starts_with?: String;
+  party_not_starts_with?: String;
+  party_ends_with?: String;
+  party_not_ends_with?: String;
+  AND?: PoliticianScalarWhereInput[] | PoliticianScalarWhereInput;
+  OR?: PoliticianScalarWhereInput[] | PoliticianScalarWhereInput;
+  NOT?: PoliticianScalarWhereInput[] | PoliticianScalarWhereInput;
+}
+
+export interface UserUpdateInput {
+  email?: String;
+  password?: String;
+  name?: String;
+  posts?: PostUpdateManyWithoutAuthorInput;
+  comments?: CommentUpdateManyWithoutAuthorInput;
+  likes?: LikeUpdateManyWithoutUserInput;
+}
+
+export interface PoliticianUpdateManyWithWhereNestedInput {
+  where: PoliticianScalarWhereInput;
+  data: PoliticianUpdateManyDataInput;
+}
+
+export type CommentWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+}>;
+
+export interface PoliticianUpdateManyDataInput {
+  name?: String;
+  party?: String;
+}
+
+export type LikeWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+}>;
+
+export interface BillUpsertWithoutLikesInput {
+  update: BillUpdateWithoutLikesDataInput;
+  create: BillCreateWithoutLikesInput;
+}
+
+export type PoliticianWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+}>;
+
+export interface LikeUpsertWithWhereUniqueWithoutUserInput {
+  where: LikeWhereUniqueInput;
+  update: LikeUpdateWithoutUserDataInput;
+  create: LikeCreateWithoutUserInput;
+}
+
+export type PostWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+}>;
+
+export interface LikeScalarWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  AND?: LikeScalarWhereInput[] | LikeScalarWhereInput;
+  OR?: LikeScalarWhereInput[] | LikeScalarWhereInput;
+  NOT?: LikeScalarWhereInput[] | LikeScalarWhereInput;
+}
+
+export type UserWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+  email?: String;
+}>;
+
+export interface UserUpsertWithoutCommentsInput {
+  update: UserUpdateWithoutCommentsDataInput;
+  create: UserCreateWithoutCommentsInput;
+}
+
+export interface PoliticianUpsertWithoutBillsInput {
+  update: PoliticianUpdateWithoutBillsDataInput;
+  create: PoliticianCreateWithoutBillsInput;
+}
+
+export interface LikeUpdateManyWithoutCommentInput {
+  create?: LikeCreateWithoutCommentInput[] | LikeCreateWithoutCommentInput;
+  delete?: LikeWhereUniqueInput[] | LikeWhereUniqueInput;
+  connect?: LikeWhereUniqueInput[] | LikeWhereUniqueInput;
+  disconnect?: LikeWhereUniqueInput[] | LikeWhereUniqueInput;
+  update?:
+    | LikeUpdateWithWhereUniqueWithoutCommentInput[]
+    | LikeUpdateWithWhereUniqueWithoutCommentInput;
+  upsert?:
+    | LikeUpsertWithWhereUniqueWithoutCommentInput[]
+    | LikeUpsertWithWhereUniqueWithoutCommentInput;
+  deleteMany?: LikeScalarWhereInput[] | LikeScalarWhereInput;
+}
+
+export interface PoliticianCreateWithoutBillsInput {
+  name: String;
+  party?: String;
+  yeas?: BillCreateManyWithoutYeasInput;
+  nays?: BillCreateManyWithoutNaysInput;
+}
+
+export interface LikeUpdateWithWhereUniqueWithoutCommentInput {
+  where: LikeWhereUniqueInput;
+  data: LikeUpdateWithoutCommentDataInput;
+}
+
+export interface LikeCreateWithoutBillInput {
+  comment?: CommentCreateOneWithoutLikesInput;
+  user: UserCreateOneWithoutLikesInput;
+}
+
+export interface LikeUpdateWithoutCommentDataInput {
+  bill?: BillUpdateOneWithoutLikesInput;
+  user?: UserUpdateOneRequiredWithoutLikesInput;
+}
+
 export interface BillCreateWithoutCommentsInput {
   code?: String;
   summary?: String;
@@ -1769,14 +1410,507 @@ export interface BillCreateWithoutCommentsInput {
   nays?: PoliticianCreateManyWithoutNaysInput;
 }
 
-export type UserWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-  email?: String;
-}>;
+export interface UserUpdateOneRequiredWithoutLikesInput {
+  create?: UserCreateWithoutLikesInput;
+  update?: UserUpdateWithoutLikesDataInput;
+  upsert?: UserUpsertWithoutLikesInput;
+  connect?: UserWhereUniqueInput;
+}
 
-export type CommentWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-}>;
+export interface BillCreateWithoutSponsorInput {
+  code?: String;
+  summary?: String;
+  likes?: LikeCreateManyWithoutBillInput;
+  comments?: CommentCreateManyWithoutBillInput;
+  yeas?: PoliticianCreateManyWithoutYeasInput;
+  nays?: PoliticianCreateManyWithoutNaysInput;
+}
+
+export interface UserUpdateWithoutLikesDataInput {
+  email?: String;
+  password?: String;
+  name?: String;
+  posts?: PostUpdateManyWithoutAuthorInput;
+  comments?: CommentUpdateManyWithoutAuthorInput;
+}
+
+export interface UserCreateWithoutCommentsInput {
+  email: String;
+  password: String;
+  name?: String;
+  posts?: PostCreateManyWithoutAuthorInput;
+  likes?: LikeCreateManyWithoutUserInput;
+}
+
+export interface CommentUpdateManyWithoutAuthorInput {
+  create?: CommentCreateWithoutAuthorInput[] | CommentCreateWithoutAuthorInput;
+  delete?: CommentWhereUniqueInput[] | CommentWhereUniqueInput;
+  connect?: CommentWhereUniqueInput[] | CommentWhereUniqueInput;
+  disconnect?: CommentWhereUniqueInput[] | CommentWhereUniqueInput;
+  update?:
+    | CommentUpdateWithWhereUniqueWithoutAuthorInput[]
+    | CommentUpdateWithWhereUniqueWithoutAuthorInput;
+  upsert?:
+    | CommentUpsertWithWhereUniqueWithoutAuthorInput[]
+    | CommentUpsertWithWhereUniqueWithoutAuthorInput;
+  deleteMany?: CommentScalarWhereInput[] | CommentScalarWhereInput;
+  updateMany?:
+    | CommentUpdateManyWithWhereNestedInput[]
+    | CommentUpdateManyWithWhereNestedInput;
+}
+
+export interface LikeCreateWithoutUserInput {
+  bill?: BillCreateOneWithoutLikesInput;
+  comment?: CommentCreateOneWithoutLikesInput;
+}
+
+export interface CommentUpdateWithWhereUniqueWithoutAuthorInput {
+  where: CommentWhereUniqueInput;
+  data: CommentUpdateWithoutAuthorDataInput;
+}
+
+export interface PoliticianCreateWithoutNaysInput {
+  name: String;
+  party?: String;
+  bills?: BillCreateManyWithoutSponsorInput;
+  yeas?: BillCreateManyWithoutYeasInput;
+}
+
+export interface CommentUpdateWithoutAuthorDataInput {
+  content?: String;
+  bill?: BillUpdateOneWithoutCommentsInput;
+  likes?: LikeUpdateManyWithoutCommentInput;
+}
+
+export interface UserCreateWithoutLikesInput {
+  email: String;
+  password: String;
+  name?: String;
+  posts?: PostCreateManyWithoutAuthorInput;
+  comments?: CommentCreateManyWithoutAuthorInput;
+}
+
+export interface CommentUpsertWithWhereUniqueWithoutAuthorInput {
+  where: CommentWhereUniqueInput;
+  update: CommentUpdateWithoutAuthorDataInput;
+  create: CommentCreateWithoutAuthorInput;
+}
+
+export interface BillCreateWithoutNaysInput {
+  code?: String;
+  summary?: String;
+  sponsor?: PoliticianCreateOneWithoutBillsInput;
+  likes?: LikeCreateManyWithoutBillInput;
+  comments?: CommentCreateManyWithoutBillInput;
+  yeas?: PoliticianCreateManyWithoutYeasInput;
+}
+
+export interface CommentScalarWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  createdAt?: DateTimeInput;
+  createdAt_not?: DateTimeInput;
+  createdAt_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_not_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_lt?: DateTimeInput;
+  createdAt_lte?: DateTimeInput;
+  createdAt_gt?: DateTimeInput;
+  createdAt_gte?: DateTimeInput;
+  content?: String;
+  content_not?: String;
+  content_in?: String[] | String;
+  content_not_in?: String[] | String;
+  content_lt?: String;
+  content_lte?: String;
+  content_gt?: String;
+  content_gte?: String;
+  content_contains?: String;
+  content_not_contains?: String;
+  content_starts_with?: String;
+  content_not_starts_with?: String;
+  content_ends_with?: String;
+  content_not_ends_with?: String;
+  AND?: CommentScalarWhereInput[] | CommentScalarWhereInput;
+  OR?: CommentScalarWhereInput[] | CommentScalarWhereInput;
+  NOT?: CommentScalarWhereInput[] | CommentScalarWhereInput;
+}
+
+export interface LikeSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: LikeWhereInput;
+  AND?: LikeSubscriptionWhereInput[] | LikeSubscriptionWhereInput;
+  OR?: LikeSubscriptionWhereInput[] | LikeSubscriptionWhereInput;
+  NOT?: LikeSubscriptionWhereInput[] | LikeSubscriptionWhereInput;
+}
+
+export interface CommentUpdateManyWithWhereNestedInput {
+  where: CommentScalarWhereInput;
+  data: CommentUpdateManyDataInput;
+}
+
+export interface PostUpdateManyMutationInput {
+  published?: Boolean;
+  title?: String;
+  content?: String;
+}
+
+export interface CommentUpdateManyDataInput {
+  content?: String;
+}
+
+export interface UserCreateOneWithoutPostsInput {
+  create?: UserCreateWithoutPostsInput;
+  connect?: UserWhereUniqueInput;
+}
+
+export interface UserUpsertWithoutLikesInput {
+  update: UserUpdateWithoutLikesDataInput;
+  create: UserCreateWithoutLikesInput;
+}
+
+export interface LikeCreateInput {
+  bill?: BillCreateOneWithoutLikesInput;
+  comment?: CommentCreateOneWithoutLikesInput;
+  user: UserCreateOneWithoutLikesInput;
+}
+
+export interface LikeUpsertWithWhereUniqueWithoutCommentInput {
+  where: LikeWhereUniqueInput;
+  update: LikeUpdateWithoutCommentDataInput;
+  create: LikeCreateWithoutCommentInput;
+}
+
+export interface BillCreateInput {
+  code?: String;
+  summary?: String;
+  sponsor?: PoliticianCreateOneWithoutBillsInput;
+  likes?: LikeCreateManyWithoutBillInput;
+  comments?: CommentCreateManyWithoutBillInput;
+  yeas?: PoliticianCreateManyWithoutYeasInput;
+  nays?: PoliticianCreateManyWithoutNaysInput;
+}
+
+export interface CommentUpsertWithWhereUniqueWithoutBillInput {
+  where: CommentWhereUniqueInput;
+  update: CommentUpdateWithoutBillDataInput;
+  create: CommentCreateWithoutBillInput;
+}
+
+export interface CommentCreateWithoutLikesInput {
+  content: String;
+  bill?: BillCreateOneWithoutCommentsInput;
+  author?: UserCreateOneWithoutCommentsInput;
+}
+
+export interface BillUpsertWithWhereUniqueWithoutSponsorInput {
+  where: BillWhereUniqueInput;
+  update: BillUpdateWithoutSponsorDataInput;
+  create: BillCreateWithoutSponsorInput;
+}
+
+export interface CommentCreateWithoutBillInput {
+  content: String;
+  author?: UserCreateOneWithoutCommentsInput;
+  likes?: LikeCreateManyWithoutCommentInput;
+}
+
+export interface BillScalarWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  code?: String;
+  code_not?: String;
+  code_in?: String[] | String;
+  code_not_in?: String[] | String;
+  code_lt?: String;
+  code_lte?: String;
+  code_gt?: String;
+  code_gte?: String;
+  code_contains?: String;
+  code_not_contains?: String;
+  code_starts_with?: String;
+  code_not_starts_with?: String;
+  code_ends_with?: String;
+  code_not_ends_with?: String;
+  summary?: String;
+  summary_not?: String;
+  summary_in?: String[] | String;
+  summary_not_in?: String[] | String;
+  summary_lt?: String;
+  summary_lte?: String;
+  summary_gt?: String;
+  summary_gte?: String;
+  summary_contains?: String;
+  summary_not_contains?: String;
+  summary_starts_with?: String;
+  summary_not_starts_with?: String;
+  summary_ends_with?: String;
+  summary_not_ends_with?: String;
+  AND?: BillScalarWhereInput[] | BillScalarWhereInput;
+  OR?: BillScalarWhereInput[] | BillScalarWhereInput;
+  NOT?: BillScalarWhereInput[] | BillScalarWhereInput;
+}
+
+export interface BillCreateWithoutLikesInput {
+  code?: String;
+  summary?: String;
+  sponsor?: PoliticianCreateOneWithoutBillsInput;
+  comments?: CommentCreateManyWithoutBillInput;
+  yeas?: PoliticianCreateManyWithoutYeasInput;
+  nays?: PoliticianCreateManyWithoutNaysInput;
+}
+
+export interface BillUpdateManyWithWhereNestedInput {
+  where: BillScalarWhereInput;
+  data: BillUpdateManyDataInput;
+}
+
+export interface CommentCreateWithoutAuthorInput {
+  content: String;
+  bill?: BillCreateOneWithoutCommentsInput;
+  likes?: LikeCreateManyWithoutCommentInput;
+}
+
+export interface BillUpdateManyDataInput {
+  code?: String;
+  summary?: String;
+}
+
+export interface BillWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  code?: String;
+  code_not?: String;
+  code_in?: String[] | String;
+  code_not_in?: String[] | String;
+  code_lt?: String;
+  code_lte?: String;
+  code_gt?: String;
+  code_gte?: String;
+  code_contains?: String;
+  code_not_contains?: String;
+  code_starts_with?: String;
+  code_not_starts_with?: String;
+  code_ends_with?: String;
+  code_not_ends_with?: String;
+  summary?: String;
+  summary_not?: String;
+  summary_in?: String[] | String;
+  summary_not_in?: String[] | String;
+  summary_lt?: String;
+  summary_lte?: String;
+  summary_gt?: String;
+  summary_gte?: String;
+  summary_contains?: String;
+  summary_not_contains?: String;
+  summary_starts_with?: String;
+  summary_not_starts_with?: String;
+  summary_ends_with?: String;
+  summary_not_ends_with?: String;
+  sponsor?: PoliticianWhereInput;
+  likes_every?: LikeWhereInput;
+  likes_some?: LikeWhereInput;
+  likes_none?: LikeWhereInput;
+  comments_every?: CommentWhereInput;
+  comments_some?: CommentWhereInput;
+  comments_none?: CommentWhereInput;
+  yeas_every?: PoliticianWhereInput;
+  yeas_some?: PoliticianWhereInput;
+  yeas_none?: PoliticianWhereInput;
+  nays_every?: PoliticianWhereInput;
+  nays_some?: PoliticianWhereInput;
+  nays_none?: PoliticianWhereInput;
+  AND?: BillWhereInput[] | BillWhereInput;
+  OR?: BillWhereInput[] | BillWhereInput;
+  NOT?: BillWhereInput[] | BillWhereInput;
+}
+
+export interface BillUpdateManyWithoutNaysInput {
+  create?: BillCreateWithoutNaysInput[] | BillCreateWithoutNaysInput;
+  delete?: BillWhereUniqueInput[] | BillWhereUniqueInput;
+  connect?: BillWhereUniqueInput[] | BillWhereUniqueInput;
+  disconnect?: BillWhereUniqueInput[] | BillWhereUniqueInput;
+  update?:
+    | BillUpdateWithWhereUniqueWithoutNaysInput[]
+    | BillUpdateWithWhereUniqueWithoutNaysInput;
+  upsert?:
+    | BillUpsertWithWhereUniqueWithoutNaysInput[]
+    | BillUpsertWithWhereUniqueWithoutNaysInput;
+  deleteMany?: BillScalarWhereInput[] | BillScalarWhereInput;
+  updateMany?:
+    | BillUpdateManyWithWhereNestedInput[]
+    | BillUpdateManyWithWhereNestedInput;
+}
+
+export interface PoliticianUpdateInput {
+  name?: String;
+  party?: String;
+  bills?: BillUpdateManyWithoutSponsorInput;
+  yeas?: BillUpdateManyWithoutYeasInput;
+  nays?: BillUpdateManyWithoutNaysInput;
+}
+
+export interface BillUpdateWithWhereUniqueWithoutNaysInput {
+  where: BillWhereUniqueInput;
+  data: BillUpdateWithoutNaysDataInput;
+}
+
+export interface BillCreateWithoutYeasInput {
+  code?: String;
+  summary?: String;
+  sponsor?: PoliticianCreateOneWithoutBillsInput;
+  likes?: LikeCreateManyWithoutBillInput;
+  comments?: CommentCreateManyWithoutBillInput;
+  nays?: PoliticianCreateManyWithoutNaysInput;
+}
+
+export interface BillUpdateWithoutNaysDataInput {
+  code?: String;
+  summary?: String;
+  sponsor?: PoliticianUpdateOneWithoutBillsInput;
+  likes?: LikeUpdateManyWithoutBillInput;
+  comments?: CommentUpdateManyWithoutBillInput;
+  yeas?: PoliticianUpdateManyWithoutYeasInput;
+}
+
+export interface PostCreateWithoutAuthorInput {
+  published?: Boolean;
+  title: String;
+  content?: String;
+}
+
+export interface CommentUpsertWithoutLikesInput {
+  update: CommentUpdateWithoutLikesDataInput;
+  create: CommentCreateWithoutLikesInput;
+}
+
+export interface BillUpsertWithoutCommentsInput {
+  update: BillUpdateWithoutCommentsDataInput;
+  create: BillCreateWithoutCommentsInput;
+}
+
+export interface PoliticianUpsertWithWhereUniqueWithoutYeasInput {
+  where: PoliticianWhereUniqueInput;
+  update: PoliticianUpdateWithoutYeasDataInput;
+  create: PoliticianCreateWithoutYeasInput;
+}
+
+export interface BillUpsertWithWhereUniqueWithoutNaysInput {
+  where: BillWhereUniqueInput;
+  update: BillUpdateWithoutNaysDataInput;
+  create: BillCreateWithoutNaysInput;
+}
+
+export interface LikeCreateWithoutCommentInput {
+  bill?: BillCreateOneWithoutLikesInput;
+  user: UserCreateOneWithoutLikesInput;
+}
+
+export interface PoliticianCreateWithoutYeasInput {
+  name: String;
+  party?: String;
+  bills?: BillCreateManyWithoutSponsorInput;
+  nays?: BillCreateManyWithoutNaysInput;
+}
+
+export interface CommentCreateInput {
+  content: String;
+  bill?: BillCreateOneWithoutCommentsInput;
+  author?: UserCreateOneWithoutCommentsInput;
+  likes?: LikeCreateManyWithoutCommentInput;
+}
+
+export interface UserUpdateOneRequiredWithoutPostsInput {
+  create?: UserCreateWithoutPostsInput;
+  update?: UserUpdateWithoutPostsDataInput;
+  upsert?: UserUpsertWithoutPostsInput;
+  connect?: UserWhereUniqueInput;
+}
+
+export interface CommentWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  createdAt?: DateTimeInput;
+  createdAt_not?: DateTimeInput;
+  createdAt_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_not_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_lt?: DateTimeInput;
+  createdAt_lte?: DateTimeInput;
+  createdAt_gt?: DateTimeInput;
+  createdAt_gte?: DateTimeInput;
+  content?: String;
+  content_not?: String;
+  content_in?: String[] | String;
+  content_not_in?: String[] | String;
+  content_lt?: String;
+  content_lte?: String;
+  content_gt?: String;
+  content_gte?: String;
+  content_contains?: String;
+  content_not_contains?: String;
+  content_starts_with?: String;
+  content_not_starts_with?: String;
+  content_ends_with?: String;
+  content_not_ends_with?: String;
+  bill?: BillWhereInput;
+  author?: UserWhereInput;
+  likes_every?: LikeWhereInput;
+  likes_some?: LikeWhereInput;
+  likes_none?: LikeWhereInput;
+  AND?: CommentWhereInput[] | CommentWhereInput;
+  OR?: CommentWhereInput[] | CommentWhereInput;
+  NOT?: CommentWhereInput[] | CommentWhereInput;
+}
 
 export interface NodeNode {
   id: ID_Output;
@@ -1904,25 +2038,20 @@ export interface AggregateUserSubscription
   count: () => Promise<AsyncIterator<Int>>;
 }
 
-export interface UserConnection {
-  pageInfo: PageInfo;
-  edges: UserEdge[];
+export interface BatchPayload {
+  count: Long;
 }
 
-export interface UserConnectionPromise
-  extends Promise<UserConnection>,
+export interface BatchPayloadPromise
+  extends Promise<BatchPayload>,
     Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<UserEdge>>() => T;
-  aggregate: <T = AggregateUserPromise>() => T;
+  count: () => Promise<Long>;
 }
 
-export interface UserConnectionSubscription
-  extends Promise<AsyncIterator<UserConnection>>,
+export interface BatchPayloadSubscription
+  extends Promise<AsyncIterator<BatchPayload>>,
     Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<UserEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateUserSubscription>() => T;
+  count: () => Promise<AsyncIterator<Long>>;
 }
 
 export interface BillConnection {
@@ -1946,29 +2075,25 @@ export interface BillConnectionSubscription
   aggregate: <T = AggregateBillSubscription>() => T;
 }
 
-export interface UserSubscriptionPayload {
-  mutation: MutationType;
-  node: User;
-  updatedFields: String[];
-  previousValues: UserPreviousValues;
+export interface UserConnection {
+  pageInfo: PageInfo;
+  edges: UserEdge[];
 }
 
-export interface UserSubscriptionPayloadPromise
-  extends Promise<UserSubscriptionPayload>,
+export interface UserConnectionPromise
+  extends Promise<UserConnection>,
     Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = UserPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = UserPreviousValuesPromise>() => T;
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<UserEdge>>() => T;
+  aggregate: <T = AggregateUserPromise>() => T;
 }
 
-export interface UserSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<UserSubscriptionPayload>>,
+export interface UserConnectionSubscription
+  extends Promise<AsyncIterator<UserConnection>>,
     Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = UserSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = UserPreviousValuesSubscription>() => T;
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<UserEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateUserSubscription>() => T;
 }
 
 export interface Politician {
@@ -2331,6 +2456,24 @@ export interface UserPromise extends Promise<User>, Fragmentable {
     first?: Int;
     last?: Int;
   }) => T;
+  comments: <T = FragmentableArray<Comment>>(args?: {
+    where?: CommentWhereInput;
+    orderBy?: CommentOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  likes: <T = FragmentableArray<Like>>(args?: {
+    where?: LikeWhereInput;
+    orderBy?: LikeOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
 }
 
 export interface UserSubscription
@@ -2343,6 +2486,24 @@ export interface UserSubscription
   posts: <T = Promise<AsyncIterator<PostSubscription>>>(args?: {
     where?: PostWhereInput;
     orderBy?: PostOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  comments: <T = Promise<AsyncIterator<CommentSubscription>>>(args?: {
+    where?: CommentWhereInput;
+    orderBy?: CommentOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  likes: <T = Promise<AsyncIterator<LikeSubscription>>>(args?: {
+    where?: LikeWhereInput;
+    orderBy?: LikeOrderByInput;
     skip?: Int;
     after?: String;
     before?: String;
@@ -2667,20 +2828,29 @@ export interface LikePreviousValuesSubscription
   id: () => Promise<AsyncIterator<ID_Output>>;
 }
 
-export interface BatchPayload {
-  count: Long;
+export interface UserSubscriptionPayload {
+  mutation: MutationType;
+  node: User;
+  updatedFields: String[];
+  previousValues: UserPreviousValues;
 }
 
-export interface BatchPayloadPromise
-  extends Promise<BatchPayload>,
+export interface UserSubscriptionPayloadPromise
+  extends Promise<UserSubscriptionPayload>,
     Fragmentable {
-  count: () => Promise<Long>;
+  mutation: () => Promise<MutationType>;
+  node: <T = UserPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = UserPreviousValuesPromise>() => T;
 }
 
-export interface BatchPayloadSubscription
-  extends Promise<AsyncIterator<BatchPayload>>,
+export interface UserSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<UserSubscriptionPayload>>,
     Fragmentable {
-  count: () => Promise<AsyncIterator<Long>>;
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = UserSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = UserPreviousValuesSubscription>() => T;
 }
 
 export interface AggregateComment {

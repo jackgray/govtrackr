@@ -461,8 +461,13 @@ type CommentConnection {
 input CommentCreateInput {
   content: String!
   bill: BillCreateOneWithoutCommentsInput
-  author: UserCreateOneInput
+  author: UserCreateOneWithoutCommentsInput
   likes: LikeCreateManyWithoutCommentInput
+}
+
+input CommentCreateManyWithoutAuthorInput {
+  create: [CommentCreateWithoutAuthorInput!]
+  connect: [CommentWhereUniqueInput!]
 }
 
 input CommentCreateManyWithoutBillInput {
@@ -475,16 +480,22 @@ input CommentCreateOneWithoutLikesInput {
   connect: CommentWhereUniqueInput
 }
 
+input CommentCreateWithoutAuthorInput {
+  content: String!
+  bill: BillCreateOneWithoutCommentsInput
+  likes: LikeCreateManyWithoutCommentInput
+}
+
 input CommentCreateWithoutBillInput {
   content: String!
-  author: UserCreateOneInput
+  author: UserCreateOneWithoutCommentsInput
   likes: LikeCreateManyWithoutCommentInput
 }
 
 input CommentCreateWithoutLikesInput {
   content: String!
   bill: BillCreateOneWithoutCommentsInput
-  author: UserCreateOneInput
+  author: UserCreateOneWithoutCommentsInput
 }
 
 type CommentEdge {
@@ -572,7 +583,7 @@ input CommentSubscriptionWhereInput {
 input CommentUpdateInput {
   content: String
   bill: BillUpdateOneWithoutCommentsInput
-  author: UserUpdateOneInput
+  author: UserUpdateOneWithoutCommentsInput
   likes: LikeUpdateManyWithoutCommentInput
 }
 
@@ -582,6 +593,17 @@ input CommentUpdateManyDataInput {
 
 input CommentUpdateManyMutationInput {
   content: String
+}
+
+input CommentUpdateManyWithoutAuthorInput {
+  create: [CommentCreateWithoutAuthorInput!]
+  delete: [CommentWhereUniqueInput!]
+  connect: [CommentWhereUniqueInput!]
+  disconnect: [CommentWhereUniqueInput!]
+  update: [CommentUpdateWithWhereUniqueWithoutAuthorInput!]
+  upsert: [CommentUpsertWithWhereUniqueWithoutAuthorInput!]
+  deleteMany: [CommentScalarWhereInput!]
+  updateMany: [CommentUpdateManyWithWhereNestedInput!]
 }
 
 input CommentUpdateManyWithoutBillInput {
@@ -609,16 +631,27 @@ input CommentUpdateOneWithoutLikesInput {
   connect: CommentWhereUniqueInput
 }
 
+input CommentUpdateWithoutAuthorDataInput {
+  content: String
+  bill: BillUpdateOneWithoutCommentsInput
+  likes: LikeUpdateManyWithoutCommentInput
+}
+
 input CommentUpdateWithoutBillDataInput {
   content: String
-  author: UserUpdateOneInput
+  author: UserUpdateOneWithoutCommentsInput
   likes: LikeUpdateManyWithoutCommentInput
 }
 
 input CommentUpdateWithoutLikesDataInput {
   content: String
   bill: BillUpdateOneWithoutCommentsInput
-  author: UserUpdateOneInput
+  author: UserUpdateOneWithoutCommentsInput
+}
+
+input CommentUpdateWithWhereUniqueWithoutAuthorInput {
+  where: CommentWhereUniqueInput!
+  data: CommentUpdateWithoutAuthorDataInput!
 }
 
 input CommentUpdateWithWhereUniqueWithoutBillInput {
@@ -629,6 +662,12 @@ input CommentUpdateWithWhereUniqueWithoutBillInput {
 input CommentUpsertWithoutLikesInput {
   update: CommentUpdateWithoutLikesDataInput!
   create: CommentCreateWithoutLikesInput!
+}
+
+input CommentUpsertWithWhereUniqueWithoutAuthorInput {
+  where: CommentWhereUniqueInput!
+  update: CommentUpdateWithoutAuthorDataInput!
+  create: CommentCreateWithoutAuthorInput!
 }
 
 input CommentUpsertWithWhereUniqueWithoutBillInput {
@@ -706,7 +745,7 @@ type LikeConnection {
 input LikeCreateInput {
   bill: BillCreateOneWithoutLikesInput
   comment: CommentCreateOneWithoutLikesInput
-  user: UserCreateOneInput!
+  user: UserCreateOneWithoutLikesInput!
 }
 
 input LikeCreateManyWithoutBillInput {
@@ -719,14 +758,24 @@ input LikeCreateManyWithoutCommentInput {
   connect: [LikeWhereUniqueInput!]
 }
 
+input LikeCreateManyWithoutUserInput {
+  create: [LikeCreateWithoutUserInput!]
+  connect: [LikeWhereUniqueInput!]
+}
+
 input LikeCreateWithoutBillInput {
   comment: CommentCreateOneWithoutLikesInput
-  user: UserCreateOneInput!
+  user: UserCreateOneWithoutLikesInput!
 }
 
 input LikeCreateWithoutCommentInput {
   bill: BillCreateOneWithoutLikesInput
-  user: UserCreateOneInput!
+  user: UserCreateOneWithoutLikesInput!
+}
+
+input LikeCreateWithoutUserInput {
+  bill: BillCreateOneWithoutLikesInput
+  comment: CommentCreateOneWithoutLikesInput
 }
 
 type LikeEdge {
@@ -788,7 +837,7 @@ input LikeSubscriptionWhereInput {
 input LikeUpdateInput {
   bill: BillUpdateOneWithoutLikesInput
   comment: CommentUpdateOneWithoutLikesInput
-  user: UserUpdateOneRequiredInput
+  user: UserUpdateOneRequiredWithoutLikesInput
 }
 
 input LikeUpdateManyWithoutBillInput {
@@ -811,14 +860,29 @@ input LikeUpdateManyWithoutCommentInput {
   deleteMany: [LikeScalarWhereInput!]
 }
 
+input LikeUpdateManyWithoutUserInput {
+  create: [LikeCreateWithoutUserInput!]
+  delete: [LikeWhereUniqueInput!]
+  connect: [LikeWhereUniqueInput!]
+  disconnect: [LikeWhereUniqueInput!]
+  update: [LikeUpdateWithWhereUniqueWithoutUserInput!]
+  upsert: [LikeUpsertWithWhereUniqueWithoutUserInput!]
+  deleteMany: [LikeScalarWhereInput!]
+}
+
 input LikeUpdateWithoutBillDataInput {
   comment: CommentUpdateOneWithoutLikesInput
-  user: UserUpdateOneRequiredInput
+  user: UserUpdateOneRequiredWithoutLikesInput
 }
 
 input LikeUpdateWithoutCommentDataInput {
   bill: BillUpdateOneWithoutLikesInput
-  user: UserUpdateOneRequiredInput
+  user: UserUpdateOneRequiredWithoutLikesInput
+}
+
+input LikeUpdateWithoutUserDataInput {
+  bill: BillUpdateOneWithoutLikesInput
+  comment: CommentUpdateOneWithoutLikesInput
 }
 
 input LikeUpdateWithWhereUniqueWithoutBillInput {
@@ -831,6 +895,11 @@ input LikeUpdateWithWhereUniqueWithoutCommentInput {
   data: LikeUpdateWithoutCommentDataInput!
 }
 
+input LikeUpdateWithWhereUniqueWithoutUserInput {
+  where: LikeWhereUniqueInput!
+  data: LikeUpdateWithoutUserDataInput!
+}
+
 input LikeUpsertWithWhereUniqueWithoutBillInput {
   where: LikeWhereUniqueInput!
   update: LikeUpdateWithoutBillDataInput!
@@ -841,6 +910,12 @@ input LikeUpsertWithWhereUniqueWithoutCommentInput {
   where: LikeWhereUniqueInput!
   update: LikeUpdateWithoutCommentDataInput!
   create: LikeCreateWithoutCommentInput!
+}
+
+input LikeUpsertWithWhereUniqueWithoutUserInput {
+  where: LikeWhereUniqueInput!
+  update: LikeUpdateWithoutUserDataInput!
+  create: LikeCreateWithoutUserInput!
 }
 
 input LikeWhereInput {
@@ -1546,6 +1621,8 @@ type User {
   password: String!
   name: String
   posts(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Post!]
+  comments(where: CommentWhereInput, orderBy: CommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Comment!]
+  likes(where: LikeWhereInput, orderBy: LikeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Like!]
 }
 
 type UserConnection {
@@ -1559,10 +1636,17 @@ input UserCreateInput {
   password: String!
   name: String
   posts: PostCreateManyWithoutAuthorInput
+  comments: CommentCreateManyWithoutAuthorInput
+  likes: LikeCreateManyWithoutUserInput
 }
 
-input UserCreateOneInput {
-  create: UserCreateInput
+input UserCreateOneWithoutCommentsInput {
+  create: UserCreateWithoutCommentsInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateOneWithoutLikesInput {
+  create: UserCreateWithoutLikesInput
   connect: UserWhereUniqueInput
 }
 
@@ -1571,10 +1655,28 @@ input UserCreateOneWithoutPostsInput {
   connect: UserWhereUniqueInput
 }
 
+input UserCreateWithoutCommentsInput {
+  email: String!
+  password: String!
+  name: String
+  posts: PostCreateManyWithoutAuthorInput
+  likes: LikeCreateManyWithoutUserInput
+}
+
+input UserCreateWithoutLikesInput {
+  email: String!
+  password: String!
+  name: String
+  posts: PostCreateManyWithoutAuthorInput
+  comments: CommentCreateManyWithoutAuthorInput
+}
+
 input UserCreateWithoutPostsInput {
   email: String!
   password: String!
   name: String
+  comments: CommentCreateManyWithoutAuthorInput
+  likes: LikeCreateManyWithoutUserInput
 }
 
 type UserEdge {
@@ -1622,18 +1724,13 @@ input UserSubscriptionWhereInput {
   NOT: [UserSubscriptionWhereInput!]
 }
 
-input UserUpdateDataInput {
-  email: String
-  password: String
-  name: String
-  posts: PostUpdateManyWithoutAuthorInput
-}
-
 input UserUpdateInput {
   email: String
   password: String
   name: String
   posts: PostUpdateManyWithoutAuthorInput
+  comments: CommentUpdateManyWithoutAuthorInput
+  likes: LikeUpdateManyWithoutUserInput
 }
 
 input UserUpdateManyMutationInput {
@@ -1642,19 +1739,10 @@ input UserUpdateManyMutationInput {
   name: String
 }
 
-input UserUpdateOneInput {
-  create: UserCreateInput
-  update: UserUpdateDataInput
-  upsert: UserUpsertNestedInput
-  delete: Boolean
-  disconnect: Boolean
-  connect: UserWhereUniqueInput
-}
-
-input UserUpdateOneRequiredInput {
-  create: UserCreateInput
-  update: UserUpdateDataInput
-  upsert: UserUpsertNestedInput
+input UserUpdateOneRequiredWithoutLikesInput {
+  create: UserCreateWithoutLikesInput
+  update: UserUpdateWithoutLikesDataInput
+  upsert: UserUpsertWithoutLikesInput
   connect: UserWhereUniqueInput
 }
 
@@ -1665,15 +1753,47 @@ input UserUpdateOneRequiredWithoutPostsInput {
   connect: UserWhereUniqueInput
 }
 
+input UserUpdateOneWithoutCommentsInput {
+  create: UserCreateWithoutCommentsInput
+  update: UserUpdateWithoutCommentsDataInput
+  upsert: UserUpsertWithoutCommentsInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: UserWhereUniqueInput
+}
+
+input UserUpdateWithoutCommentsDataInput {
+  email: String
+  password: String
+  name: String
+  posts: PostUpdateManyWithoutAuthorInput
+  likes: LikeUpdateManyWithoutUserInput
+}
+
+input UserUpdateWithoutLikesDataInput {
+  email: String
+  password: String
+  name: String
+  posts: PostUpdateManyWithoutAuthorInput
+  comments: CommentUpdateManyWithoutAuthorInput
+}
+
 input UserUpdateWithoutPostsDataInput {
   email: String
   password: String
   name: String
+  comments: CommentUpdateManyWithoutAuthorInput
+  likes: LikeUpdateManyWithoutUserInput
 }
 
-input UserUpsertNestedInput {
-  update: UserUpdateDataInput!
-  create: UserCreateInput!
+input UserUpsertWithoutCommentsInput {
+  update: UserUpdateWithoutCommentsDataInput!
+  create: UserCreateWithoutCommentsInput!
+}
+
+input UserUpsertWithoutLikesInput {
+  update: UserUpdateWithoutLikesDataInput!
+  create: UserCreateWithoutLikesInput!
 }
 
 input UserUpsertWithoutPostsInput {
@@ -1741,6 +1861,12 @@ input UserWhereInput {
   posts_every: PostWhereInput
   posts_some: PostWhereInput
   posts_none: PostWhereInput
+  comments_every: CommentWhereInput
+  comments_some: CommentWhereInput
+  comments_none: CommentWhereInput
+  likes_every: LikeWhereInput
+  likes_some: LikeWhereInput
+  likes_none: LikeWhereInput
   AND: [UserWhereInput!]
   OR: [UserWhereInput!]
   NOT: [UserWhereInput!]

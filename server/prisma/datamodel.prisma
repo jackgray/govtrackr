@@ -14,6 +14,8 @@ type User {
 	password: String!
 	name: String
 	posts: [Post!]!
+	comments: [Comment] @relation(name: "CommentsByUser")
+	likes: [Like] @relation(name: "LikesByUser")
 }
 
 # type User {
