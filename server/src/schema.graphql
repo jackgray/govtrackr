@@ -1,4 +1,4 @@
-# import * from './generated/prisma-client'
+# import * from './generated/prisma-client/prisma-schema.js'
 
 scalar DateTime
 
