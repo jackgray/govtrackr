@@ -1,8 +1,7 @@
 node_modules/
 oldserver/
-client/
+oldclient/
 server/node_modules
-server/generated
 .DS_Store
 *.log
 client/.next

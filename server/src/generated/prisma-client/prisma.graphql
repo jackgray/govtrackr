@@ -1,5 +1,4 @@
-module.exports = {
-        typeDefs: /* GraphQL */ `type AggregateBill {
+type AggregateBill {
   count: Int!
 }
 
@@ -1876,6 +1875,3 @@ input UserWhereUniqueInput {
   id: ID
   email: String
 }
-`
-      }
-    

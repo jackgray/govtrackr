@@ -1,22 +1,33 @@
 // configure page initialization
 // https://nextjs.org/docs/#custom-app
 
-import App, { Container } from 'next/app';
-import React from 'react';
-import withApolloClient from '../lib/with-apollo-client';
+import App, { Container as NextContainer } from 'next/app';
+import React, { Component } from 'react';
 import { ApolloProvider } from 'react-apollo';
+import Router from 'next/router';
+import { Container as UIContainer } from 'semantic-ui-react';
+import styled from 'styled-components';
+import withApolloClient from '../lib/with-apollo-client';
 
-class MyApp extends App {
+class NextApp extends App {
 	render() {
 		const { Component, pageProps, apolloClient } = this.props;
 		return (
-			<Container>
+			<NextContainer>
 				<ApolloProvider client={apolloClient}>
 					<Component {...pageProps} />
 				</ApolloProvider>
-			</Container>
+			</NextContainer>
 		);
 	}
 }
 
-export default withApolloClient(MyApp);
+export default withApolloClient(NextApp);
+
+const StyledContainer = styled(UIContainer)`
+	&&& {
+		min-height: 100vh;
+		display: flex;
+		flext-direction: column
+	}
+`;
