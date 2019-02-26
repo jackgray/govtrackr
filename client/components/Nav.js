@@ -12,13 +12,37 @@ class Nav extends Component {
 	handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
 	render() {
+		const { isAuth } = this.props;
 		const { activeItem } = this.state;
 		return (
 			<nav>
-				<StyledMenu>
+				<StyledMenu pointing secondary>
 					<Link prefetch href="/">
-						<StyledLink>Feed</StyledLink>
+						<StyledLink>Home</StyledLink>
 					</Link>
+					{!isAuth && (
+						<Link prefetch href="/add-bill">
+							<StyledLink>Add Bill</StyledLink>
+						</Link>
+					)}
+					<Menu.Menu position="right">
+						{isAuth && (
+							<Link prefetch href="/profile">
+								<StyledLink>Profile</StyledLink>
+							</Link>
+						)}
+						{!isAuth && (
+							<Link prefetch href="/login">
+								<StyledLink>Login</StyledLink>
+							</Link>
+						)}
+						{!isAuth && (
+							<Link prefetch href="signup">
+								<StyledLink>Signup</StyledLink>
+							</Link>
+						)}
+						{isAuth && <StyledLink onClick={this.logout}>Logout</StyledLink>}
+					</Menu.Menu>
 				</StyledMenu>
 			</nav>
 		);
